@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#101b25">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Inquiries Dashboard | Akotex Nigeria Limited</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="dashboard.css">
+  </head>
+  <body class="dashboard-page">
+    <header class="site-header dashboard-header">
+      <a class="brand" href="index.html" aria-label="Akotex Nigeria Limited home">
+        <span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></span>
+        <span class="brand-name">AKOTEX <small>NIGERIA LIMITED</small></span>
+      </a>
+      <a class="dashboard-back" href="index.html">View website <span aria-hidden="true">↗</span></a>
+    </header>
+
+    <main class="dashboard-main">
+      <section class="auth-card" id="login-panel" aria-labelledby="login-title">
+        <p class="section-kicker"><span>AKOTEX</span> / ADMIN</p>
+        <h1 id="login-title">Sign in to your dashboard.</h1>
+        <p class="auth-description">Use an administrator account invited through your Supabase project.</p>
+        <form id="login-form" class="login-form">
+          <label>Email address<input name="email" type="email" autocomplete="username" required></label>
+          <label>Password<input name="password" type="password" autocomplete="current-password" required></label>
+          <button class="button dashboard-button" type="submit">Sign in</button>
+          <p class="dashboard-message" id="login-message" role="status" aria-live="polite"></p>
+        </form>
+      </section>
+
+      <section class="inbox" id="inbox-panel" hidden aria-labelledby="inbox-title">
+        <div class="inbox-header">
+          <div>
+            <p class="section-kicker"><span>AKOTEX</span> / ADMIN</p>
+            <h1 id="inbox-title">Inquiries</h1>
+            <p class="inbox-subtitle">Review and manage messages sent from your website.</p>
+          </div>
+          <button class="button sign-out-button" id="sign-out" type="button">Sign out</button>
+        </div>
+
+        <div class="inquiry-stats" aria-label="Inquiry totals">
+          <div><span>Total inquiries</span><strong id="total-count">—</strong></div>
+          <div><span>New</span><strong id="new-count">—</strong></div>
+          <div><span>In progress</span><strong id="progress-count">—</strong></div>
+          <div><span>Resolved</span><strong id="resolved-count">—</strong></div>
+        </div>
+
+        <div class="inbox-toolbar">
+          <label class="search-label">Search this page
+            <input id="search-input" type="search" placeholder="Name, email or message">
+          </label>
+          <label class="filter-label">Filter by status
+            <select id="status-filter">
+              <option value="all">All statuses</option>
+              <option value="new">New</option>
+              <option value="in_progress">In progress</option>
+              <option value="resolved">Resolved</option>
+            </select>
+          </label>
+          <button class="button refresh-button" id="refresh-inquiries" type="button">Refresh</button>
+        </div>
+
+        <p class="dashboard-message" id="inbox-message" role="status" aria-live="polite"></p>
+        <div class="table-wrap">
+          <table class="inquiry-table">
+            <thead>
+              <tr><th>Inquiry</th><th>Received</th><th>Status</th><th>Actions</th></tr>
+            </thead>
+            <tbody id="inquiry-rows"></tbody>
+          </table>
+          <p class="empty-state" id="empty-state" hidden>No inquiries match these filters.</p>
+        </div>
+        <div class="pagination">
+          <span id="page-summary">—</span>
+          <div>
+            <button class="button page-button" id="previous-page" type="button">Previous</button>
+            <button class="button page-button" id="next-page" type="button">Next</button>
+          </div>
+        </div>
+      </section>
+    </main>
+    <script type="module" src="dashboard.js"></script>
+  </body>
+</html>
